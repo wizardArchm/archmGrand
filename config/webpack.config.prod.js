@@ -16,6 +16,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
+    externals: [`uws`],
     module: {
         rules: [
             {

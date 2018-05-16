@@ -8,5 +8,10 @@ app.use(json())
     .use(router.routes())
     .use(router.allowedMethods())
     .use(parameter(app))
-export default app
+var server = require(`http`).createServer(app.callback())
+var io = require(`socket.io`)(server, {wsEngine: `ws`, serveClient: false})
+io.on(`connection`, (socket) => {
+    console.log(socket)
+})
+export default server
 
