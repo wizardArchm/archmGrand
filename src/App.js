@@ -12,6 +12,9 @@ var server = require(`http`).createServer(app.callback())
 var io = require(`socket.io`)(server, {wsEngine: `ws`, serveClient: false})
 io.on(`connection`, (socket) => {
     console.log(socket)
+    // socket.emit(`news`, `world`)
+
+    io.emit(`news`, {for: socket.id, message: `world`})
 })
 export default server
 

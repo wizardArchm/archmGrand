@@ -7,6 +7,9 @@
 </head>
 <script>
     var socket = io();
+    socket.on('news',function(mes){
+        console.log(mes)
+    })
 </script>
 <body>
 <h1>HW</h1>
