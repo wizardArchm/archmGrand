@@ -2,6 +2,7 @@ import Router from 'koa-router'
 import fs from 'fs'
 import streamToPromise from 'stream-to-promise'
 import RestRouter from './Controller/RestController'
+import GraphqlRouter from './Controller/GraphqlController'
 
 const router = new Router({
     prefix: `/api`
@@ -13,5 +14,5 @@ router.get(`/`, async (ctx, next) => {
 })
 
 router.use(RestRouter.routes(), RestRouter.allowedMethods())
-// router.use(graphqlRouter.routes(), graphqlRouter.allowedMethods())
+router.use(GraphqlRouter.routes(), GraphqlRouter.allowedMethods())
 export default router
