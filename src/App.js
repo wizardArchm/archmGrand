@@ -9,7 +9,7 @@ app.use(json())
     .use(router.allowedMethods())
     .use(parameter(app))
 var server = require(`http`).createServer(app.callback())
-var io = require(`socket.io`)(server, {wsEngine: `ws`, serveClient: false})
+var io = require(`socket.io`)(server, {wsEngine: `ws`, serveClient: false, path: `/api/websocket`})
 io.on(`connection`, (socket) => {
     console.log(socket)
     // socket.emit(`news`, `world`)
