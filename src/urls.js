@@ -1,6 +1,7 @@
 import Router from 'koa-router'
 import fs from 'fs'
 import streamToPromise from 'stream-to-promise'
+import RestRouter from './Controller/RestController'
 
 const router = new Router({
     prefix: `/api`
@@ -11,6 +12,6 @@ router.get(`/`, async (ctx, next) => {
     ctx.response.body = await streamToPromise(fs.createReadStream(`./src/View/index.html`, {encoding: `utf8`}))
 })
 
-// router.use(minioRouter.routes(), minioRouter.allowedMethods())
+router.use(RestRouter.routes(), RestRouter.allowedMethods())
 // router.use(graphqlRouter.routes(), graphqlRouter.allowedMethods())
 export default router
